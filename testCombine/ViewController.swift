@@ -14,35 +14,33 @@ class ViewController: UIViewController {
   // MARK: - UI Properties
   let IDTextField: UITextField = {
     let view = UITextField()
-    let border = CALayer()
-    border.borderColor = UIColor.lightGray.cgColor
-    border.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
-    border.borderWidth = CGFloat(1)
-    view.layer.addSublayer(border)
-    view.placeholder = "아이디 입력하세요."
-    view.layoutIfNeeded()
+    view.layer.borderWidth = 1
+    view.layer.borderColor = UIColor.lightGray.cgColor
+    view.layer.cornerRadius = 10
+    view.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
+    view.leftViewMode = .always
+    view.placeholder = " 아이디 입력하세요."
     return view
   }()
   
   let passwordTextField: UITextField = {
     let view = UITextField()
-    let border = CALayer()
-    border.borderColor = UIColor.lightGray.cgColor
-    border.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
-    border.borderWidth = CGFloat(1)
-    view.layer.addSublayer(border)
+    view.layer.borderWidth = 1
+    view.layer.borderColor = UIColor.lightGray.cgColor
+    view.layer.cornerRadius = 10
+    view.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
+    view.leftViewMode = .always
     view.placeholder = "비밀번호를 입력하세요."
     return view
   }()
   
   let passwordReenterTextField: UITextField = {
     let view = UITextField()
-    let border = CALayer()
-    border.borderColor = UIColor.lightGray.cgColor
-    border.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
-    border.borderWidth = CGFloat(1)
-    view.layer.addSublayer(border)
-    
+    view.layer.borderWidth = 1
+    view.layer.borderColor = UIColor.lightGray.cgColor
+    view.layer.cornerRadius = 10
+    view.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
+    view.leftViewMode = .always
     view.placeholder = "비밀번호 재입력하세요"
     return view
   }()
@@ -57,10 +55,10 @@ class ViewController: UIViewController {
   
   
   // MARK: - Properties
-  private let user = PassthroughSubject<String, Never>()
-  private let password = PassthroughSubject<String, Never>()
-  private let passwordReenter = PassthroughSubject<String, Never>()
-  
+//  private let user = PassthroughSubject<String, Never>()
+//  private let password = PassthroughSubject<String, Never>()
+//  private let passwordReenter = PassthroughSubject<String, Never>()
+
   private var cancellables = Set<AnyCancellable>()
   private let viewModel = ViewModel()
   
@@ -85,9 +83,9 @@ class ViewController: UIViewController {
     view.addSubview(passwordReenterTextField)
     view.addSubview(signInButton)
     
-    [IDTextField, passwordTextField, passwordReenterTextField].forEach {
-      $0.addTarget(self, action: #selector(self.textFieldDidChange(sender:)), for: .editingChanged)
-    }
+//    [IDTextField, passwordTextField, passwordReenterTextField].forEach {
+//      $0.addTarget(self, action: #selector(self.textFieldDidChange(sender:)), for: .editingChanged)
+//    }
   }
   
   private func setupLayout() {
@@ -122,9 +120,9 @@ class ViewController: UIViewController {
   
   private func bind(to viewModel: ViewModel) {
     let input = ViewModel.Input(
-      userName: user.eraseToAnyPublisher(),
-      password: password.eraseToAnyPublisher(),
-      passwordReenter: passwordReenter.eraseToAnyPublisher()
+      userName: IDTextField.textPublisher(),
+      password: passwordTextField.textPublisher(),
+      passwordReenter: passwordReenterTextField.textPublisher()
     )
     
     let output = viewModel.transform(input: input)
@@ -139,27 +137,34 @@ class ViewController: UIViewController {
       .store(in: &cancellables)
     
     
+    IDTextField
+      .textPublisher()
+      .sink { text in
+        print(text)
+      }
+      .store(in: &cancellables)
+    
     signInButton
       .publisher(for: .touchUpInside)
-      .sink { [weak self] _ in
+      .sink {  _ in
         print("sign in button tapped")
       }
       .store(in: &cancellables)
     
   }
   
-  @objc private func textFieldDidChange(sender: UITextField) {
-    switch sender {
-    case IDTextField:
-      user.send(sender.text!)
-    case passwordTextField:
-      password.send(sender.text!)
-    case passwordReenterTextField:
-      passwordReenter.send(sender.text!)
-    default:
-      break
-    }
-  }
+//  @objc private func textFieldDidChange(sender: UITextField) {
+//    switch sender {
+//    case IDTextField:
+//      user.send(sender.text!)
+//    case passwordTextField:
+//      password.send(sender.text!)
+//    case passwordReenterTextField:
+//      passwordReenter.send(sender.text!)
+//    default:
+//      break
+//    }
+//  }
   
 }
 
