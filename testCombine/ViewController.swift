@@ -137,6 +137,15 @@ class ViewController: UIViewController {
         self?.signInButton.backgroundColor = state ? .systemOrange : .systemGray
       }
       .store(in: &cancellables)
+    
+    
+    signInButton
+      .publisher(for: .touchUpInside)
+      .sink { [weak self] _ in
+        print("sign in button tapped")
+      }
+      .store(in: &cancellables)
+    
   }
   
   @objc private func textFieldDidChange(sender: UITextField) {

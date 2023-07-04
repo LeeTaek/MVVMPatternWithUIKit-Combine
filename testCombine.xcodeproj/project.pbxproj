@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		999F8D162A53A85700BBAFF9 /* UIControl+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999F8D152A53A85700BBAFF9 /* UIControl+Combine.swift */; };
 		99B7C3B42A52B55C00F7D9E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B7C3B32A52B55C00F7D9E0 /* AppDelegate.swift */; };
 		99B7C3B62A52B55C00F7D9E0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B7C3B52A52B55C00F7D9E0 /* SceneDelegate.swift */; };
 		99B7C3B82A52B55C00F7D9E0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B7C3B72A52B55C00F7D9E0 /* ViewController.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		999F8D152A53A85700BBAFF9 /* UIControl+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Combine.swift"; sourceTree = "<group>"; };
 		99B7C3B02A52B55C00F7D9E0 /* testCombine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testCombine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99B7C3B32A52B55C00F7D9E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99B7C3B52A52B55C00F7D9E0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 				99B7C3B52A52B55C00F7D9E0 /* SceneDelegate.swift */,
 				99B7C3B72A52B55C00F7D9E0 /* ViewController.swift */,
 				99B7C3CD2A52B74000F7D9E0 /* ViewModel.swift */,
+				999F8D152A53A85700BBAFF9 /* UIControl+Combine.swift */,
 				99B7C3BC2A52B55E00F7D9E0 /* Assets.xcassets */,
 				99B7C3BE2A52B55E00F7D9E0 /* LaunchScreen.storyboard */,
 				99B7C3C12A52B55E00F7D9E0 /* Info.plist */,
@@ -152,6 +155,7 @@
 				99B7C3B82A52B55C00F7D9E0 /* ViewController.swift in Sources */,
 				99B7C3B42A52B55C00F7D9E0 /* AppDelegate.swift in Sources */,
 				99B7C3CE2A52B74000F7D9E0 /* ViewModel.swift in Sources */,
+				999F8D162A53A85700BBAFF9 /* UIControl+Combine.swift in Sources */,
 				99B7C3B62A52B55C00F7D9E0 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
